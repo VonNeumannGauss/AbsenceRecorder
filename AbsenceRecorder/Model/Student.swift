@@ -8,7 +8,7 @@
 import Foundation
 
 class Student {
-    let foreame: String
+    let forename: String
     let surname: String
     let birthday: Date
     

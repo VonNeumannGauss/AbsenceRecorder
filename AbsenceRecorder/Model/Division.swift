@@ -35,10 +35,16 @@ class Division {
             let calendar = Calendar(identifier: .gregorian)
             let birthday = calendar.date(from: dateComponents)
             
-            let newStudent = Student(forename: "student\(i)", surname: "Etonian",birthday: birthday!)
+            let newStudent = Student(forename: "student \(i)", surname: "Etonian", birthday: birthday!)
             
             myStudents.append(newStudent)
+            
         }
+        
+        division.students = myStudents
+        
+        print(myStudents)
+        //print(students)
         
         return division
         
