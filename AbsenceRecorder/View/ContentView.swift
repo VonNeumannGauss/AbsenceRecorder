@@ -9,6 +9,7 @@ import SwiftUI
 
 struct ContentView: View {
     var body: some View {
+        //make ti so taht Text displays some data about the first division in the list of divisions - make reference to the static property 'examples'
         Text("Hello, world!")
             .padding()
     }
