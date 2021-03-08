@@ -8,10 +8,11 @@
 import SwiftUI
 
 struct ContentView: View {
+    
+    let myDivisions: [Division]
+    
     var body: some View {
         //make ti so taht Text displays some data about the first division in the list of divisions - make reference to the static property 'examples'
-        
-        let myDivisions = Division.examples
         
         let firstDivision = myDivisions[0]
         
@@ -31,6 +32,6 @@ struct ContentView: View {
 
 struct ContentView_Previews: PreviewProvider {
     static var previews: some View {
-        ContentView()
+        ContentView(myDivisions: Division.examples)
     }
 }
