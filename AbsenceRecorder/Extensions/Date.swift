@@ -21,4 +21,8 @@ extension Date {
         return Calendar.current.date(byAdding: .day, value: -1, to: self) ?? Date()
     }
     
+    func nextDay() -> Date {
+        return Calendar.current.date(byAdding: .day, value: 1, to: self) ?? Date()
+    }
+    
 }

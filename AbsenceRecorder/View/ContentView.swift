@@ -26,7 +26,13 @@ struct ContentView: View {
                 //SOMETHING ?? SOMETHING ELSE = nil coalesecing - will run the stuff after ?? if nill
                 ToolbarItem(placement: .navigationBarLeading) {
                     Button(action: { currentDate = currentDate.previousDay() }) {
-                        Image(systemName: "arrow.backward")
+                        Image(systemName: "arrow.left.circle.fill")
+                    }
+                }
+                
+                ToolbarItem(placement: .navigationBarTrailing) {
+                    Button(action: { currentDate = currentDate.nextDay() }) {
+                        Image(systemName: "arrow.right.circle.fill")
                     }
                 }
             }
