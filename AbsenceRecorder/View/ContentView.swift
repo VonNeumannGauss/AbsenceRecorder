@@ -10,7 +10,8 @@ import SwiftUI
 struct ContentView: View {
     
     let myDivisions: [Division]
-    var currentDate: Date = Date()
+    //need to make it change
+    @State private var currentDate: Date = Date()
     
     var body: some View {
         
@@ -21,6 +22,14 @@ struct ContentView: View {
                     .padding()
             }
             .navigationTitle(currentDate.getShortDate())
+            .toolbar {
+                //SOMETHING ?? SOMETHING ELSE = nil coalesecing - will run the stuff after ?? if nill
+                ToolbarItem(placement: .navigationBarLeading) {
+                    Button(action: { currentDate = currentDate.previousDay() }) {
+                        Image(systemName: "arrow.backward")
+                    }
+                }
+            }
         }
         
     }
