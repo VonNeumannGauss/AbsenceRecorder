@@ -18,8 +18,8 @@ struct ContentView: View {
         NavigationView {
             //List viewtype used to show a collection of items
             List(myDivisions, id: \.self.code) { division in
-                Text("Division code: \(division.code)")
-                    .padding()
+                //removed this code and put it into a separate view
+                DivisionItem(division: division)
             }
             .navigationTitle(currentDate.getShortDate())
             .toolbar {
