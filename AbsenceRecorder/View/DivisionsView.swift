@@ -7,7 +7,7 @@
 
 import SwiftUI
 
-struct ContentView: View {
+struct DivisionsView: View {
     
     let myDivisions: [Division]
     //need to make it change
@@ -48,6 +48,6 @@ struct ContentView: View {
 //only for previewing the app
 struct ContentView_Previews: PreviewProvider {
     static var previews: some View {
-        ContentView(myDivisions: Division.examples)
+        DivisionsView(myDivisions: Division.examples)
     }
 }
