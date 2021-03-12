@@ -11,7 +11,7 @@ struct AbsenceView: View {
     let division: Division
     
     var body: some View {
-        Text("Absence VIew: \(division.code)")
+        Text("Absence View: \(division.code)")
     }
 }
 

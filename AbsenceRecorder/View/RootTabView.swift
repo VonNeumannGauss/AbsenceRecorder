@@ -18,6 +18,12 @@ struct RootTabView: View {
                     
                 }
             //Statistics view - no functionality - create a file and just put it in here as an additional tab with image and text
+            StatisticsView()
+                .tabItem {
+                    Image(systemName: "number")
+                    Text("Statistics")
+                }
+            
         }
     }
 }
