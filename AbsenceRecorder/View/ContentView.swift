@@ -19,11 +19,14 @@ struct ContentView: View {
             //List viewtype used to show a collection of items
             List(myDivisions, id: \.self.code) { division in
                 //removed this code and put it into a separate view
-                DivisionItem(division: division)
+                NavigationLink(destination: AbsenceView(division: division)) {
+                    DivisionItem(division: division)
+                }
             }
             .navigationTitle(currentDate.getShortDate())
             .toolbar {
                 //SOMETHING ?? SOMETHING ELSE = nil coalesecing - will run the stuff after ?? if nill
+              
                 ToolbarItem(placement: .navigationBarLeading) {
                     Button(action: { currentDate = currentDate.previousDay() }) {
                         Image(systemName: "arrow.left.circle.fill")
@@ -35,6 +38,7 @@ struct ContentView: View {
                         Image(systemName: "arrow.right.circle.fill")
                     }
                 }
+
             }
         }
         
