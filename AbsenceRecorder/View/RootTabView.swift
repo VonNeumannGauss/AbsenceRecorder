@@ -10,7 +10,7 @@ import SwiftUI
 struct RootTabView: View {
     var body: some View {
         TabView {
-            DivisionsView(myDivisions: Division.examples)
+            DivisionsView()
                 .tabItem {
                     //label = two views - image and text combined
                     Image(systemName: "square.and.pencil")

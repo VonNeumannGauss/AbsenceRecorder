@@ -11,7 +11,9 @@ import SwiftUI
 struct AbsenceRecorderApp: App {
     var body: some Scene {
         WindowGroup {
+            //all child values and grandchild values and great-grandchild views, etc. all have access to this StateController
             RootTabView()
+                .environmentObject(StateController())
         }
     }
 }

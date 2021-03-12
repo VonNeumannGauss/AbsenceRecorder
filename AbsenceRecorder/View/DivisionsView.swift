@@ -8,8 +8,7 @@
 import SwiftUI
 
 struct DivisionsView: View {
-    
-    let myDivisions: [Division]
+    @EnvironmentObject var state: StateController
     //need to make it change
     @State private var currentDate: Date = Date()
     
@@ -17,7 +16,7 @@ struct DivisionsView: View {
         
         NavigationView {
             //List viewtype used to show a collection of items
-            List(myDivisions, id: \.self.code) { division in
+            List(state.divisions, id: \.self.code) { division in
                 //removed this code and put it into a separate view
                 NavigationLink(destination: AbsenceView(division: division)) {
                     DivisionItem(division: division)
@@ -48,6 +47,7 @@ struct DivisionsView: View {
 //only for previewing the app
 struct ContentView_Previews: PreviewProvider {
     static var previews: some View {
-        DivisionsView(myDivisions: Division.examples)
+        DivisionsView()
+            .environmentObject(StateController())
     }
 }
