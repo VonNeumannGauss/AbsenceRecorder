@@ -9,24 +9,29 @@ import SwiftUI
 
 struct AbsenceItem: View {
     let forename: String
-    var isPresent: Bool
+    @State var isPresent: Bool
     
     var body: some View {
         HStack {
             Text("\(forename)")
             Spacer()
             if isPresent {
-                Button(action: {}) {
+                Button(action: { toggleAbsent() }) {
                     Image(systemName: "checkmark.seal.fill")
                 }
             } else {
-                Button(action: {}) {
+                Button(action: { toggleAbsent() }) {
                     Image(systemName: "xmark.seal")
                 }
                     
             }
         }
     }
+    
+    func toggleAbsent() {
+        isPresent.toggle()
+    }
+    
 }
 
 struct AbsenceItem_Previews: PreviewProvider {

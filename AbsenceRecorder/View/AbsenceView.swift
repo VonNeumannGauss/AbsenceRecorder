@@ -12,7 +12,7 @@ struct AbsenceView: View {
     
     var body: some View {
         List(division.students, id: \.self.forename) { student in
-            Text("\(student.forename)")
+            AbsenceItem(forename: student.forename, isPresent: true)
         }
     }
 }
