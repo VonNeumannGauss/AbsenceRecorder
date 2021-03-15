@@ -8,14 +8,16 @@
 import SwiftUI
 
 struct AbsenceItem: View {
-    let forename: String
-    @State var isPresent: Bool
+    //IF some other view is responsible for creating this instance, you use @ObservedObject
+    //if THIS view is responsible for creating the object, you use @StateObject
+    //@EnvironmentObject is for when 
+    @ObservedObject var studentAbsence: StudentAbsence
     
     var body: some View {
         HStack {
-            Text("\(forename)")
+            Text("\(studentAbsence.student.forename)")
             Spacer()
-            if isPresent {
+            if studentAbsence.isPresent {
                 Button(action: { toggleAbsent() }) {
                     Image(systemName: "checkmark.seal.fill")
                 }
@@ -29,13 +31,13 @@ struct AbsenceItem: View {
     }
     
     func toggleAbsent() {
-        isPresent.toggle()
+        studentAbsence.isPresent.toggle()
     }
     
 }
 
 struct AbsenceItem_Previews: PreviewProvider {
     static var previews: some View {
-        AbsenceItem(forename: "Steve", isPresent: true)
+        AbsenceItem(studentAbsence: StudentAbsence.example)
     }
 }

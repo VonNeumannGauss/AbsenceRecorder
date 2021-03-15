@@ -18,7 +18,7 @@ struct DivisionsView: View {
             //List viewtype used to show a collection of items
             List(state.divisions, id: \.self.code) { division in
                 //removed this code and put it into a separate view
-                NavigationLink(destination: AbsenceView(division: division)) {
+                NavigationLink(destination: AbsenceView(absence: Absence(date: Date(), students: division.students))) {
                     DivisionItem(division: division)
                 }
             }
