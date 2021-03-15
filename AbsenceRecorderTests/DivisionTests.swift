@@ -6,26 +6,30 @@
 //
 
 import XCTest
+@testable import AbsenceRecorder
 
 class DivisionTests: XCTestCase {
 
-    override func setUpWithError() throws {
-        // Put setup code here. This method is called before the invocation of each test method in the class.
-    }
-
-    override func tearDownWithError() throws {
-        // Put teardown code here. This method is called after the invocation of each test method in the class.
-    }
-
-    func testExample() throws {
-        // This is an example of a functional test case.
-        // Use XCTAssert and related functions to verify your tests produce the correct results.
-    }
-
-    func testPerformanceExample() throws {
-        // This is an example of a performance test case.
-        self.measure {
-            // Put the code you want to measure the time of here.
+    func testGetAbsenceDivisionWithAbsenceOnThatDayReturnsAbsence() throws {
+        //arrange
+        let division = Division(code: "TestDiv")
+        let dateToday = Date()
+        let dateLaterToday = Date(timeIntervalSinceNow: 100)
+        let dateTomorrow = Date(timeIntervalSinceNow: 1000000000)
+        
+        let absence1 = Absence(date: dateTomorrow, students: Student.examples)
+        let absence2 = Absence(date: dateToday, students: Student.examples)
+        division.absences.append(absence1)
+        division.absences.append(absence2)
+        
+        //act
+        let actual = division.getAbsence(for: dateLaterToday)
+        
+        //assert
+        XCTAssertNotNil(actual)
+        //just a check if actual is nil
+        if let actualNotNil = actual {
+            XCTAssertEqual(actual!.dateTakenOn, absence2.dateTakenOn)
         }
     }
 
