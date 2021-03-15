@@ -27,10 +27,18 @@ class Division {
     
     func createAbsenceOrGetExistingIfAvailable(for date: Date) -> Absence {
         //if absence exist for a given date, return it - use getAbsence
+        if let absence = getAbsence(for: date) {
+            return absence
+        } else {
+            let newAbsence = Absence(date: date, students: students)
+            absences.append(newAbsence)
+            return newAbsence
+        }
         
         //otherwise, create a brand new absence with this date passed in, using the current set of students
         //add this to the absences array
         //return the absence
+        
     }
     
     //only runs when debuggging

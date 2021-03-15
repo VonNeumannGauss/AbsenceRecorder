@@ -32,5 +32,31 @@ class DivisionTests: XCTestCase {
             XCTAssertEqual(actual!.dateTakenOn, absence2.dateTakenOn)
         }
     }
+    
+    func testcreateAbsenceOrGetExistingIfAvailableReturnsNotNilWhenAbsenceExists() throws {
+        //arrange
+        let division = Division(code: "TestDiv")
+        let dateToday = Date()
+        let absence = Absence(date: dateToday, students: Student.examples)
+        division.absences.append(absence)
+        //act
+        
+        //assert
+        XCTAssertNotNil(division.createAbsenceOrGetExistingIfAvailable(for: dateToday))
+    }
+    
+    func testcreateAbsenceOrGetExistingIfAvailableReturnsNotNilWhenAbsenceDoesNotExist() throws {
+        //arrange
+        let division = Division(code: "TestDiv")
+        let dateToday = Date()
+        let dateInFuture = Date(timeIntervalSinceNow: 100000)
+        let absence = Absence(date: dateToday, students: Student.examples)
+        division.absences.append(absence)
+        
+        //act
+        
+        //assert
+        XCTAssertNotNil(division.createAbsenceOrGetExistingIfAvailable(for: dateInFuture))
+    }
 
 }
