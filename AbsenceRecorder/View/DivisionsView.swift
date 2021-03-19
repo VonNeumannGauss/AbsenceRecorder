@@ -11,6 +11,7 @@ struct DivisionsView: View {
     @EnvironmentObject var state: StateController
     //need to make it change
     @State private var currentDate: Date = Date()
+    let myFileManager = FileManager()
     
     var body: some View {
         
@@ -22,7 +23,7 @@ struct DivisionsView: View {
                     DivisionItem(division: division)
                 }
             }
-            .onAppear(perform: { state.saveToFile() } )
+            .onAppear(perform: { myFileManager.saveToFile(to: state.getPath(fileName: "divisions"), objectsToEncode: state.divisions) } )
             .navigationTitle(currentDate.getShortDate())
             .toolbar {
                 //SOMETHING ?? SOMETHING ELSE = nil coalesecing - will run the stuff after ?? if nill

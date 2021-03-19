@@ -16,7 +16,8 @@ class StateController: ObservableObject {
     @Published var divisions: [Division] = []
     
     init() {
-        loadFromFile()
+        let myFileManager = FileManager()
+        divisions = myFileManager.loadFromFile(from: getPath(fileName: "divisions"), decodableType: [Division])
         //divisions = Division.examples
     }
     

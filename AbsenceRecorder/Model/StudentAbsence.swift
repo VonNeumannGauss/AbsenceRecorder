@@ -16,7 +16,7 @@ class StudentAbsence: ObservableObject, Codable {
     }
     
     required init(from decoder: Decoder) throws {
-        let container = decoder.container(keyedBy: CodingKeys.self)
+        let container = try decoder.container(keyedBy: CodingKeys.self)
         student = try container.decode(Student.self, forKey: .student)
         isPresent = try container.decode(Bool.self, forKey: .isPresent)
     }
