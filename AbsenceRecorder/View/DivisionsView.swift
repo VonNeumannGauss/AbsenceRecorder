@@ -22,6 +22,7 @@ struct DivisionsView: View {
                     DivisionItem(division: division)
                 }
             }
+            .onAppear(perform: { state.saveToFile() } )
             .navigationTitle(currentDate.getShortDate())
             .toolbar {
                 //SOMETHING ?? SOMETHING ELSE = nil coalesecing - will run the stuff after ?? if nill
