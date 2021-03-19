@@ -8,7 +8,7 @@
 import Foundation
 
 extension FileManager {
-    func loadFromFile<T: Decodable>(from url: URL, decodableType: T) -> T?{
+    func load<T: Codable>(from url: URL) -> T?{
         if let data = try? Data(contentsOf: url) {
             let decoder = JSONDecoder()
             if let loaded = try? decoder.decode(T.self, from: data) {
@@ -18,7 +18,7 @@ extension FileManager {
         return nil
     }
     
-    func saveToFile<U: Codable>(to url: URL, objectsToEncode: U) {
+    func save<U: Codable>(to url: URL, objectsToEncode: U) {
         //can take objects and convert into JSON text
         //create JSON encoder
         let encoder = JSONEncoder()

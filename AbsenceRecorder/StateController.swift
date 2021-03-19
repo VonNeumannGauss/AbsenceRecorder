@@ -16,21 +16,15 @@ class StateController: ObservableObject {
     @Published var divisions: [Division] = []
     
     init() {
-        let myFileManager = FileManager()
-        divisions = myFileManager.loadFromFile(from: getPath(fileName: "divisions"), decodableType: [Division])
+        //because when you initially run the code, the divisions.json file doesn't exist, so you need to runs this code initially to get some stuff in
         //divisions = Division.examples
+        loadFromFile()
     }
     
     func loadFromFile() {
-        //get url to the file you want to load from
-        let url = getPath(fileName: "divisions")
-        
-        //extracts binary data from file
-        if let data = try? Data(contentsOf: url) {
-            let decoder = JSONDecoder()
-            if let loaded = try? decoder.decode([Division].self, from: data) {
-                divisions = loaded
-            }
+        let myFileManager = FileManager()
+        if let loaded: [Division] = myFileManager.load(from: getPath(fileName: "divisions")) {
+            divisions = loaded
         }
     }
     
@@ -42,26 +36,9 @@ class StateController: ObservableObject {
         return url
     }
     
-    //make a function taht handles the path stuff for a general url
-    //extensions on FileManager - methods for save and load. Takes as a parameter save.load nad the objects that you want to deal with
     
     func saveToFile() {
-        //can take objects and convert into JSON text
-        //create JSON encoder
-        let encoder = JSONEncoder()
-        if let encoded = try? encoder.encode(divisions) {
-            //take encoded objects and convert them into string
-            if let json = String(data: encoded, encoding: .utf8) {
-                //using the user documents directory
-                //create the file path
-                let url = getPath(fileName: "divisions")
-                do {
-                    //write the json string to that file
-                    try json.write(to: url, atomically: true, encoding: .utf8)
-                } catch {
-                    print(error.localizedDescription)
-                }
-            }
-        }
+        let myFileManager = FileManager()
+        myFileManager.save(to: getPath(fileName: "divisions"), objectsToEncode: divisions)
     }
 }

@@ -23,7 +23,7 @@ struct DivisionsView: View {
                     DivisionItem(division: division)
                 }
             }
-            .onAppear(perform: { myFileManager.saveToFile(to: state.getPath(fileName: "divisions"), objectsToEncode: state.divisions) } )
+            .onAppear(perform: { state.saveToFile() } )
             .navigationTitle(currentDate.getShortDate())
             .toolbar {
                 //SOMETHING ?? SOMETHING ELSE = nil coalesecing - will run the stuff after ?? if nill
